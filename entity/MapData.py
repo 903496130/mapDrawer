@@ -1,17 +1,8 @@
 import config.config as config
 import util.commonUtil as commonUtil
+import util.arrayUtil as arrayUtil
 
-
-def createArray(x, y):
-    array = []
-    for i in range(x):
-        array.append([])
-        for j in range(y):
-            array[i].append(config.backgroundColor)
-    return array
-
-
-mapArray = createArray(config.mapSize, config.mapSize)
+mapArray = arrayUtil.createArray(config.mapSize, config.mapSize, config.backgroundColor)
 
 
 def changeMapColor(canvas, x, y, color):

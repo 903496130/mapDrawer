@@ -8,18 +8,19 @@ canvas = ""
 
 def addCanvasToWindow(window):
     global canvas
-    # 创建一个canvas画布
-    # 画布有黑色边框
-    canvas = tkinter.Canvas(window, bg='black', height=window.winfo_height() * 0.9, width=window.winfo_height() * 0.9)
-    canvas.pack(side='left')
-    # canvas添加黑色边框
-    canvas.create_rectangle(0, 0, canvas.winfo_width(), canvas.winfo_height(), outline='black')
-    # 创建点击事件
-    canvas.bind('<Button-1>', lambda event: drawCanvasEvent.handleMouseMoveEvent(canvas, event))
-    # 创建鼠标移动时间
-    canvas.bind('<B1-Motion>', lambda event: drawCanvasEvent.handleMouseMoveEvent(canvas, event))
 
-    # 注册左键放开事件
+    width = commonUtil.getHeight(window, "100%") - 70
+    height = width
+
+    group = tkinter.LabelFrame(window, text="绘制区域")
+    group.place(x=7, y=60, width=width, height=height)
+
+    canvas = tkinter.Canvas(group, bg='black', height=width - 10, width=height - 10)
+    canvas.place(x=5, y=5)
+
+    canvas.place(x=-2, y=0)
+    canvas.bind('<Button-1>', lambda event: drawCanvasEvent.handleMouseMoveEvent(canvas, event))
+    canvas.bind('<B1-Motion>', lambda event: drawCanvasEvent.handleMouseMoveEvent(canvas, event))
     canvas.bind('<ButtonRelease-1>', lambda event: drawCanvasEvent.handleMouseReleaseEvent(canvas, event))
 
 
@@ -31,3 +32,8 @@ def fullCanvasWithBlock(color):
             canvas.create_rectangle(i * blockWidthAndHeight, j * blockWidthAndHeight,
                                     (i + 1) * blockWidthAndHeight,
                                     (j + 1) * blockWidthAndHeight, fill=color, outline=color)
+
+
+
+
+

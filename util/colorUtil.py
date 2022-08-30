@@ -25,14 +25,9 @@ def getColorByValue(value):
     return valueToColor[value]
 
 
-def getColorWithOpacity(color):
-    opacity = config.brushOpacity
-    # 根据颜色的rgb值，和opacity值，计算出新的rgb值
-    # 先获取颜色的rgb值
+def getColorWithOpacity(color, opacity):
     colorRgb = getColorRgb(color)
-    # 计算出新的rgb值
     newColorRgb = [int(colorRgb[0] * opacity), int(colorRgb[1] * opacity), int(colorRgb[2] * opacity)]
-    # 返回新的rgb值
     return getColorHex(newColorRgb)
 
 
